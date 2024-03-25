@@ -1,3 +1,4 @@
+// !refactoring code to allow to switch characters and other images with arrow keys//
 function move(element) {
     element.style.position = 'fixed'
 
@@ -6,7 +7,61 @@ function move(element) {
         element.style.bottom = bottom + 'px'
     }
 
-    return {
-        to: moveToCoordinates
+function moveWithArrowKeys(left, bottom, callback){
+    let direction = null;
+    let x = left;
+    let y = bottom;
+
+    element.style.left = x + 'px'
+    element.style.bottom = y + 'px'
+    
+    
+    function moveCharacter(){ 
+        if(direction === 'west'){
+            x-=1
+        }
+        if(direction === 'north'){
+            y+=1
+        }
+        if(direction === 'east'){
+            x+=1
+        }
+        if(direction === 'south'){
+            y-=1
+        }
+        element.style.left = x + 'px'
+        element.style.bottom = y + 'px'
     }
+    
+    setInterval(moveCharacter, 1)
+    
+    document.addEventListener('keydown', function(e){
+        if(e.repeat) return;
+    
+        if(e.key === 'ArrowLeft'){
+            direction = 'west'
+        }
+        if(e.key === 'ArrowUp'){
+            direction = 'north'
+        }
+        if(e.key === 'ArrowRight'){
+            direction = 'east'
+        }
+        if(e.key === 'ArrowDown'){
+            direction = 'south'
+        }
+        callback(direction)
+    })
+
+    
+    document.addEventListener('keyup', function(e){
+        direction = null
+        callback(direction)
+    })
+}
+// ! ask why when the moveWithArrowKeys was mispelled it affected images and b!rown background location?
+return {
+    to: moveToCoordinates,
+    withArrowKeys: moveWithArrowKeys
+}
 }
