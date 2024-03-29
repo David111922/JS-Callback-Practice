@@ -1,7 +1,7 @@
 const inventory = newInventory()
 move(inventory).to(0, 0)
 // !why when I add a tree in breaks the code and where is the pine tree adde getting it's position? This changes the z index so green character goes behind tree
-// const character = newImage('assets/green-character.gif')
+const character = newImage('assets/green-character.gif')
 // character.style.position = 'absolute';
 // character.style.zIndex = '2';
 

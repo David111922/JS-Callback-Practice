@@ -59,7 +59,7 @@ function moveWithArrowKeys(left, bottom, callback){
         callback(direction)
     })
 }
-// ! ask why when the moveWithArrowKeys was mispelled it affected images and b!rown background location?
+// ! ask why when the moveWithArrowKeys was mispelled it affected images and brown background location?
 return {
     to: moveToCoordinates,
     withArrowKeys: moveWithArrowKeys
